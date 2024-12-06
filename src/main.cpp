@@ -1,18 +1,71 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+int buttonPin1 = 15;
+int LedPin[] = {23,19,18,16,4,0};
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
-}
 
+pinMode(buttonPin1,INPUT_PULLDOWN);
+for (int i = 0; i < 10; i++) {
+    pinMode(LedPin[i], OUTPUT); 
+}
+}
+int a = 0;
 void loop() {
-  // put your main code here, to run repeatedly:
+while (a == 0)
+{
+  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,HIGH);
+  delay(5000);
+  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,HIGH),digitalWrite(0,LOW);
+  delay(3000);
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,HIGH),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(5000);
+  digitalWrite(23,LOW),digitalWrite(19,HIGH),digitalWrite(18,LOW),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(3000);
+  while(digitalRead(buttonPin1)== HIGH ) a = 1;
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+while (a == 1)
+{
+  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,HIGH);
+  delay(1000);
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,HIGH);
+  delay(1000);
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,HIGH);
+  delay(1000);
+
+  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,HIGH),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,HIGH),digitalWrite(0,LOW);
+  delay(1000);
+
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,HIGH),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,HIGH),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,HIGH),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  
+  digitalWrite(23,LOW),digitalWrite(19,HIGH),digitalWrite(18,LOW),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
+  digitalWrite(23,LOW),digitalWrite(19,HIGH),digitalWrite(18,LOW),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
+  delay(1000);
 }
+
+  
+}
+  
+
+
