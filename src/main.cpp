@@ -1,71 +1,72 @@
 #include <Arduino.h>
 
-int buttonPin1 = 15;
-int LedPin[] = {23,19,18,16,4,0};
+int potPin = 36;
+
+int ledPin0 = 23;
+int ledPin1 = 19;
+int ledPin2 = 18;
+int ledPin3 = 5;
+int ledPin4 = 17;
+int ledPin5 = 16;
+int ledPin6 = 4;
+int ledPin7 = 0;
 
 void setup() {
 
-pinMode(buttonPin1,INPUT_PULLDOWN);
-for (int i = 0; i < 10; i++) {
-    pinMode(LedPin[i], OUTPUT); 
+  pinMode(ledPin0, OUTPUT); 
+  pinMode(ledPin1, OUTPUT); 
+  pinMode(ledPin2, OUTPUT); 
+  pinMode(ledPin3, OUTPUT); 
+  pinMode(ledPin4, OUTPUT); 
+  pinMode(ledPin5, OUTPUT);
+  pinMode(ledPin6, OUTPUT); 
+  pinMode(ledPin7, OUTPUT);  
 }
-}
-int a = 0;
+
 void loop() {
-while (a == 0)
-{
-  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,HIGH);
-  delay(5000);
-  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,HIGH),digitalWrite(0,LOW);
-  delay(3000);
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,HIGH),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(5000);
-  digitalWrite(23,LOW),digitalWrite(19,HIGH),digitalWrite(18,LOW),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(3000);
-  while(digitalRead(buttonPin1)== HIGH ) a = 1;
-}
 
-while (a == 1)
-{
-  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,HIGH);
-  delay(1000);
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,HIGH);
-  delay(1000);
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,HIGH);
-  delay(1000);
-
-  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,HIGH),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,HIGH),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,HIGH),digitalWrite(0,LOW);
-  delay(1000);
-
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,HIGH),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,HIGH),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,HIGH),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  
-  digitalWrite(23,LOW),digitalWrite(19,HIGH),digitalWrite(18,LOW),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,LOW),digitalWrite(19,LOW),digitalWrite(18,LOW),digitalWrite(16,LOW),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-  digitalWrite(23,LOW),digitalWrite(19,HIGH),digitalWrite(18,LOW),digitalWrite(16,HIGH),digitalWrite(4,LOW),digitalWrite(0,LOW);
-  delay(1000);
-}
-
-  
-}
+  int potValue = analogRead(potPin); // Read value from Potentiometer
   
 
+  if (potValue <= 500){
+    digitalWrite(ledPin0, HIGH);
+    digitalWrite(ledPin1, LOW);
+    digitalWrite(ledPin2, LOW);
+    digitalWrite(ledPin3, LOW);
+    digitalWrite(ledPin4, LOW);
+    digitalWrite(ledPin5, LOW);
+    digitalWrite(ledPin6, LOW);
+    digitalWrite(ledPin7, LOW);
+  }
+  else if (potValue >= 501 && potValue < 1000){
+    digitalWrite(ledPin0, HIGH);
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, LOW);
+    digitalWrite(ledPin4, LOW);
+    digitalWrite(ledPin5, LOW);
+    digitalWrite(ledPin6, LOW);
+    digitalWrite(ledPin7, LOW);
+  }
+  else if (potValue >= 1001 && potValue < 2000){
+    digitalWrite(ledPin0, HIGH);
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
+    digitalWrite(ledPin4, HIGH);
+    digitalWrite(ledPin5, LOW);
+    digitalWrite(ledPin6, LOW);
+    digitalWrite(ledPin7, LOW);
+  }
+  else if (potValue >= 2001 && potValue < 4095){
+    digitalWrite(ledPin0, HIGH);
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
+    digitalWrite(ledPin4, HIGH);
+    digitalWrite(ledPin5, HIGH);
+    digitalWrite(ledPin6, HIGH);
+    digitalWrite(ledPin7, HIGH);
+  }
 
+}
